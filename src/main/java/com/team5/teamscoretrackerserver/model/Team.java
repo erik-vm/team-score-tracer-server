@@ -1,4 +1,4 @@
-package com.team5.teamscoretrackerserver.Model;
+package com.team5.teamscoretrackerserver.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -10,12 +10,11 @@ import java.util.List;
 
 @Data
 @Document
-
 public class Team {
     @Id
     private BigInteger teamId;
     @Indexed(unique=true)
-    private Integer teamNumber;
+    private String teamName;
     private Integer teamScore;
     private List<Activity> activityList;
 }
