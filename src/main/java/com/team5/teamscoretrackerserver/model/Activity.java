@@ -1,4 +1,4 @@
-package com.team5.teamscoretrackerserver.Model;
+package com.team5.teamscoretrackerserver.model;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
