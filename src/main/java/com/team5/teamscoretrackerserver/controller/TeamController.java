@@ -3,6 +3,7 @@ package com.team5.teamscoretrackerserver.controller;
 import com.team5.teamscoretrackerserver.exeptions.TeamNotFoundException;
 import com.team5.teamscoretrackerserver.model.Team;
 import com.team5.teamscoretrackerserver.service.TeamService;
+import dtos.TeamDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,11 @@ public class TeamController {
     @GetMapping
     public List<Team> getAllTeams() {
         return teamService.getAllTeams();
+    }
+
+    @GetMapping("/team-dto")
+    public List<TeamDTO> getTeamDTO() {
+        return teamService.getTeamDTO();
     }
 
     @PutMapping("/find={name}")
