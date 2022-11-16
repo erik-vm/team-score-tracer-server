@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 @Data
 public class TeamDTO {
-    private BigInteger Id;
+    private String Id;
     private String Name;
     private Integer Score;
 }

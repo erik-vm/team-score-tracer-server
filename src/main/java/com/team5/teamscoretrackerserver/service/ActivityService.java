@@ -22,7 +22,7 @@ public class ActivityService {
     @Autowired
     private TeamRepository teamRepository;
 
-    public void editActivityScore(BigInteger teamId, BigInteger activityId, Integer score) throws TeamNotFoundException {
+    public void editActivityScore(String teamId, String activityId, Integer score) throws TeamNotFoundException {
 
 
         //We are given an activity from the frontend and searching in all teams to find out which team has this activity.

@@ -17,8 +17,8 @@ public class ActivityController {
     ActivityService activityService;
 
     @PutMapping("teamId={teamId}&activityId={activityId}&score={score}")
-    public void editActivityScore(@PathVariable("teamId") BigInteger teamId,
-                                  @PathVariable("activityId") BigInteger activityId,
+    public void editActivityScore(@PathVariable("teamId") String teamId,
+                                  @PathVariable("activityId") String activityId,
                                   @PathVariable("score") Integer score) throws TeamNotFoundException {
          activityService.editActivityScore(teamId,activityId,score);
     }

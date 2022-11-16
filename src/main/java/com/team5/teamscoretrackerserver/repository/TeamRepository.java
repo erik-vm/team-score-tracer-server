@@ -8,7 +8,7 @@ import java.math.BigInteger;
 import java.util.Optional;
 
 @Repository
-public interface TeamRepository extends MongoRepository<Team, BigInteger> {
+public interface TeamRepository extends MongoRepository<Team, String> {
 
     Optional<Team> findTeamByTeamName(String name);
 }

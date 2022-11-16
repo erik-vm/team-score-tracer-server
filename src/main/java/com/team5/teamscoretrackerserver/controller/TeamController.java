@@ -37,8 +37,8 @@ public class TeamController {
       return teamService.findTeamByName(name);
     }
 
-    @PutMapping("/id={teamId}")
-    Team findTeamById(@PathVariable("teamId")BigInteger teamId) throws TeamNotFoundException {
+    @GetMapping("/{teamId}")
+    Team findTeamById(@PathVariable("teamId")String teamId) throws TeamNotFoundException {
         return teamService.findTeamById(teamId);
     }
 }

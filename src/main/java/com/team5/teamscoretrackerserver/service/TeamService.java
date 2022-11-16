@@ -50,7 +50,7 @@ public class TeamService {
         return teamOptional.get();
     }
 
-    public Team findTeamById(BigInteger teamId) throws TeamNotFoundException {
+    public Team findTeamById(String teamId) throws TeamNotFoundException {
         Optional<Team> teamOptional = teamRepository.findById(teamId);
         if (teamOptional.isEmpty()){
             throw new TeamNotFoundException(teamId);
