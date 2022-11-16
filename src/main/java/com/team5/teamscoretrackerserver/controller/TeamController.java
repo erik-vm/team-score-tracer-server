@@ -18,8 +18,8 @@ public class TeamController {
     private TeamService teamService;
 
     @PostMapping("/add")
-    public void addTeam(@RequestBody Team team){
-        teamService.addTeam(team);
+    public Team addTeam(@RequestBody Team team){
+       return teamService.addTeam(team);
     }
 
     @GetMapping

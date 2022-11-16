@@ -18,8 +18,9 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
 
-    public void addTeam(Team team){
+    public Team addTeam(Team team){
         teamRepository.save(team);
+        return team;
     }
     public List<TeamDTO> getAllTeams(){
         return getTeamDTO();
