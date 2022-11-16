@@ -7,6 +7,7 @@ import dtos.TeamDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -22,7 +23,7 @@ public class TeamController {
     }
 
     @GetMapping
-    public List<Team> getAllTeams() {
+    public List<TeamDTO> getAllTeams() {
         return teamService.getAllTeams();
     }
 
@@ -34,5 +35,10 @@ public class TeamController {
     @PutMapping("/find={name}")
     Team findTeamByName(@PathVariable("name") String name) throws TeamNotFoundException {
       return teamService.findTeamByName(name);
+    }
+
+    @PutMapping("/id={teamId}")
+    Team findTeamById(@PathVariable("teamId")BigInteger teamId) throws TeamNotFoundException {
+        return teamService.findTeamById(teamId);
     }
 }

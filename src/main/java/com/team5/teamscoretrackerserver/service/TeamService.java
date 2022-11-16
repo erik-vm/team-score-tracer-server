@@ -7,6 +7,7 @@ import dtos.TeamDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,8 +21,8 @@ public class TeamService {
     public void addTeam(Team team){
         teamRepository.save(team);
     }
-    public List<Team> getAllTeams(){
-        return teamRepository.findAll();
+    public List<TeamDTO> getAllTeams(){
+        return getTeamDTO();
     }
 
     //DTO related
@@ -43,6 +44,14 @@ public class TeamService {
         Optional<Team> teamOptional = teamRepository.findTeamByTeamName(name);
         if (teamOptional.isEmpty()){
             throw new TeamNotFoundException(name);
+        }
+        return teamOptional.get();
+    }
+
+    public Team findTeamById(BigInteger teamId) throws TeamNotFoundException {
+        Optional<Team> teamOptional = teamRepository.findById(teamId);
+        if (teamOptional.isEmpty()){
+            throw new TeamNotFoundException(teamId);
         }
         return teamOptional.get();
     }
