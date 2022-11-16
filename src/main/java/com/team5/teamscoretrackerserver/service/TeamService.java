@@ -35,6 +35,7 @@ public class TeamService {
     private TeamDTO convertEntityToDTO(Team team){
 
         TeamDTO teamDTO = new TeamDTO();
+        teamDTO.setId(team.getTeamId());
         teamDTO.setName(team.getTeamName());
         teamDTO.setScore(team.getTeamScore());
         return teamDTO;
