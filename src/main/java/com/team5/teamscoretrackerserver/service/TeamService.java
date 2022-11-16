@@ -18,9 +18,9 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
 
-    public Team addTeam(Team team){
+    public TeamDTO addTeam(Team team){
         teamRepository.save(team);
-        return team;
+        return convertEntityToDTO(team);
     }
     public List<TeamDTO> getAllTeams(){
         return getTeamDTO();
