@@ -1,12 +1,10 @@
 package com.team5.teamscoretrackerserver.model;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @Data
@@ -18,4 +16,9 @@ public class Team {
     private String teamName;
     private Integer teamScore;
     private List<Activity> activityList;
+
+    public Team(String teamName, Integer teamScore) {
+        this.teamName = teamName;
+        this.teamScore = teamScore;
+    }
 }

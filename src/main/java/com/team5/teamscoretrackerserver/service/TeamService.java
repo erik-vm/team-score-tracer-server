@@ -7,7 +7,6 @@ import dtos.TeamDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,7 +32,7 @@ public class TeamService {
                 .map(this::convertEntityToDTO)
                 .collect(Collectors.toList());
     }
-    private TeamDTO convertEntityToDTO(Team team){
+    public TeamDTO convertEntityToDTO(Team team){
 
         TeamDTO teamDTO = new TeamDTO();
         teamDTO.setId(team.getTeamId());

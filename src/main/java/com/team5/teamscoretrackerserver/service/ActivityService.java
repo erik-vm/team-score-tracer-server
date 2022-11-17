@@ -5,13 +5,9 @@ import com.team5.teamscoretrackerserver.model.Activity;
 import com.team5.teamscoretrackerserver.model.Team;
 import com.team5.teamscoretrackerserver.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
