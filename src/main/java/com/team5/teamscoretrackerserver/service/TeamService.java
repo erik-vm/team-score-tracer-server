@@ -1,6 +1,7 @@
 package com.team5.teamscoretrackerserver.service;
 
 import com.team5.teamscoretrackerserver.exeptions.TeamNotFoundException;
+import com.team5.teamscoretrackerserver.exeptions.TeamSavingFailedException;
 import com.team5.teamscoretrackerserver.model.Team;
 import com.team5.teamscoretrackerserver.repository.TeamRepository;
 import dtos.TeamDTO;
@@ -17,16 +18,22 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
 
-    public TeamDTO addTeam(Team team){
+    public TeamDTO addTeam(Team team) throws TeamSavingFailedException {
+        if (team.getTeamName() == null || team.getTeamName().equals("")){
+            throw new TeamSavingFailedException();
+        }
         teamRepository.save(team);
         return convertEntityToDTO(team);
     }
-    public List<TeamDTO> getAllTeams(){
+    public List<TeamDTO> getAllTeams() throws TeamNotFoundException {
         return getTeamDTO();
     }
 
     //DTO related
-    public List<TeamDTO> getTeamDTO(){
+    public List<TeamDTO> getTeamDTO() throws TeamNotFoundException {
+        if (teamRepository.findAll().isEmpty()){
+            throw new TeamNotFoundException();
+        }
         return teamRepository.findAll()
                 .stream()
                 .map(this::convertEntityToDTO)
@@ -56,4 +63,6 @@ public class TeamService {
         }
         return teamOptional.get();
     }
+
+
 }

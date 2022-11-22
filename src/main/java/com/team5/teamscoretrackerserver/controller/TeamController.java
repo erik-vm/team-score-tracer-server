@@ -1,6 +1,7 @@
 package com.team5.teamscoretrackerserver.controller;
 
 import com.team5.teamscoretrackerserver.exeptions.TeamNotFoundException;
+import com.team5.teamscoretrackerserver.exeptions.TeamSavingFailedException;
 import com.team5.teamscoretrackerserver.model.Team;
 import com.team5.teamscoretrackerserver.service.TeamService;
 import dtos.TeamDTO;
@@ -17,17 +18,17 @@ public class TeamController {
     private TeamService teamService;
 
     @PostMapping("/add")
-    public TeamDTO addTeam(@RequestBody Team team){
+    public TeamDTO addTeam(@RequestBody Team team) throws TeamSavingFailedException {
        return teamService.addTeam(team);
     }
 
     @GetMapping
-    public List<TeamDTO> getAllTeams() {
+    public List<TeamDTO> getAllTeams() throws TeamNotFoundException {
         return teamService.getAllTeams();
     }
 
     @GetMapping("/team-dto")
-    public List<TeamDTO> getTeamDTO() {
+    public List<TeamDTO> getTeamDTO() throws TeamNotFoundException {
         return teamService.getTeamDTO();
     }
 

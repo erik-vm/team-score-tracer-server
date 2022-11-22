@@ -38,9 +38,4 @@ public class ActivityService {
                 teamRepository.save(team);
             }
 
-
-
-
-
-
 }
