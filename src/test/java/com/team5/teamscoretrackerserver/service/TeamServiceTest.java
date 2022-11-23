@@ -2,6 +2,7 @@ package com.team5.teamscoretrackerserver.service;
 
 import com.team5.teamscoretrackerserver.exeptions.TeamNotFoundException;
 import com.team5.teamscoretrackerserver.exeptions.TeamSavingFailedException;
+import com.team5.teamscoretrackerserver.exeptions.TeamWithThatNameAlreadyExists;
 import com.team5.teamscoretrackerserver.model.Team;
 import com.team5.teamscoretrackerserver.repository.TeamRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +36,7 @@ class TeamServiceTest {
 
 
     @Test
-    void whenAddingTeam_thenShouldReturnTeamTDO() throws TeamSavingFailedException {
+    void whenAddingTeam_thenShouldReturnTeamTDO() throws TeamSavingFailedException, TeamWithThatNameAlreadyExists {
         when(teamRepository.save(team)).thenReturn(team);
         assertEquals(teamService.convertEntityToDTO(team), teamService.addTeam(team));
     }

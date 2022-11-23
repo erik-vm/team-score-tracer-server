@@ -2,6 +2,7 @@ package com.team5.teamscoretrackerserver.controller;
 
 import com.team5.teamscoretrackerserver.exeptions.TeamNotFoundException;
 import com.team5.teamscoretrackerserver.exeptions.TeamSavingFailedException;
+import com.team5.teamscoretrackerserver.exeptions.TeamWithThatNameAlreadyExists;
 import com.team5.teamscoretrackerserver.model.Team;
 import com.team5.teamscoretrackerserver.service.TeamService;
 import dtos.TeamDTO;
@@ -18,7 +19,7 @@ public class TeamController {
     private TeamService teamService;
 
     @PostMapping("/add")
-    public TeamDTO addTeam(@RequestBody Team team) throws TeamSavingFailedException {
+    public TeamDTO addTeam(@RequestBody Team team) throws TeamSavingFailedException, TeamWithThatNameAlreadyExists {
        return teamService.addTeam(team);
     }
 
