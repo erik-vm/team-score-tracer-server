@@ -9,15 +9,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TeamServiceAutomatedTest {
 
-    private WebDriver webDriver;
+    WebDriver driver = new ChromeDriver();
 
 
     @BeforeAll
@@ -37,8 +39,7 @@ public class TeamServiceAutomatedTest {
     }
 
     @Test
-    void openGoogle() throws InterruptedException {
-        boolean testFail = true;
+    void addTeamTest() throws InterruptedException {
         driver.get("http://localhost:3000/");
 
         //Wait for the page to load
@@ -52,25 +53,24 @@ public class TeamServiceAutomatedTest {
 
         //adding a team
         WebElement input = driver.findElement(By.xpath("//button[@class='description']"));
-//        Thread.sleep(10000);
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.elementToBeClickable(input));
+
         input.click();
-        Long rowCount2 = driver.findElements(By.xpath(countTeams)).stream().count();
-//        Thread.sleep(10000);
-        //checking if the new team was added
-        if (rowCount.equals(rowCount2)) {
-//            Thread.sleep(10000);
-            testFail = false;
-        }
+
+        //Count the elements in the teams div only when the new team is added
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         Thread.sleep(10000);
-        if (testFail)
-//            Thread.sleep(10000);
-            fail("Team add doesn't work");
+// It should be made with the expression below but not working for now
+//        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='team'][position() = $rowCount]")));
+
+        Long rowCount2 = driver.findElements(By.xpath(countTeams)).stream().count();
+        System.out.println(rowCount2);
+        assertEquals(rowCount, rowCount2);
+
+        //checking if the new team was added
     }
 
 
-    WebDriver driver = new ChromeDriver();
+
 
 }
